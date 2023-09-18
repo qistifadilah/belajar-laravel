@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class GenreController extends Controller
 {
@@ -13,7 +14,7 @@ class GenreController extends Controller
     public function index()
     {
         //
-        $genres = DB::table('genres')->get();
+        $genres = Genre::all();
         return view('genre.index', compact('genres'));
     }
 
@@ -33,19 +34,25 @@ class GenreController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
-        ]);
-        $query = DB::table('genres')->insert([
-            "name" => $request["name"],
+            'nama' => 'required|unique:genres,nama|min:5',
+        ], [
+            'nama.required' => 'Nama harus diisi',
+            'nama.unique' => 'Nama sudah digunakan',
+            'nama.min' => 'Nama harus diisi lebih dari 5 karakter',
         ]);
 
-        return redirect('/genres');
+        // insert data use Eloquent ORM
+        $genre = new Genre;
+        $genre->nama = $request->nama;
+        $genre->save();
+
+        return redirect()->route('genre.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Genre $genre)
     {
         //
     }
@@ -53,7 +60,7 @@ class GenreController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Genre $genre)
     {
         //
     }
@@ -61,7 +68,7 @@ class GenreController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Genre $genre)
     {
         //
     }
@@ -69,8 +76,12 @@ class GenreController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Genre $genre)
     {
         //
+        //$genre = Genre::find($id);
+        //$genre->delete();
+        $genre = Genre::where('id', $genre->id)->delete();
+        return redirect()->route('genre.index');
     }
 }

@@ -29,8 +29,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" class="form-control" name="nama" id="nama"
-                                placeholder="Enter Nama" value="{{ old('nama') }}">
+                            <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama"
+                                id="nama" placeholder="Enter Nama" value="{{ old('nama') }}">
                         </div>
                         @error('nama')
                             <div class="alert alert-danger">{{ $message }}</div>

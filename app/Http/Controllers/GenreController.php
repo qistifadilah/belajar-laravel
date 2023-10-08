@@ -35,7 +35,7 @@ class GenreController extends Controller
         //
         $request->validate([
             'nama' => 'required|unique:genres,nama|min:5',
-        ], [
+        ], [            // custom message
             'nama.required' => 'Nama harus diisi',
             'nama.unique' => 'Nama sudah digunakan',
             'nama.min' => 'Nama harus diisi lebih dari 5 karakter',
@@ -55,6 +55,7 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         //
+        return view('genre.show', compact('genre'));
     }
 
     /**
@@ -63,6 +64,7 @@ class GenreController extends Controller
     public function edit(Genre $genre)
     {
         //
+        return view('genre.edit', compact('genre'));
     }
 
     /**
@@ -71,6 +73,17 @@ class GenreController extends Controller
     public function update(Request $request, Genre $genre)
     {
         //
+        $request->validate([
+            'nama' => 'required|unique:genres,nama|min:5',
+        ], [
+            'nama.required' => 'Nama harus diisi',
+            'nama.unique' => 'Nama sudah digunakan',
+            'nama.min' => 'Nama harus diisi lebih dari 5 karakter',
+        ]);
+
+        $genre->update($request->all());
+        
+        return redirect()->route('genre.index');
     }
 
     /**

@@ -36,7 +36,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                                        <h3 class="card-title">List Data Cast</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -75,6 +75,16 @@
                                                 @endforelse
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-3">
+                                                <a class="btn btn-primary" href="{{ route('cast.create') }}"
+                                                    role="button">
+                                                    <i class="fas fa-plus"></i>
+                                                    Data Cast</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- /.card-body -->
                                 </div>

@@ -24,7 +24,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('genre.update', $genres[0]->id) }}" method="POST">
+                <form action="{{ route('genre.update', $genre->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="card-body">
@@ -34,7 +34,7 @@
                                 class="form-control @error('nama')
                                 is-invalid
                             @enderror"
-                                name="nama" id="nama" placeholder="Enter Nama" value="{{ $genres[0]->nama }}">
+                                name="nama" id="nama" placeholder="Enter Nama" value="{{ $genre->nama }}">
                         </div>
                         @error('nama')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -43,6 +43,7 @@
 
                     <div class="card-footer">
                         <button type="update" class="btn btn-warning">Update</button>
+                        <input type="button" class="btn btn-warning" value="Back" onclick="history.back()">
                     </div>
                 </form>
             </div>

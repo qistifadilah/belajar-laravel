@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CastController,
     GenreController,
+    AuthController
 };
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,24 @@ use App\Http\Controllers\{
 
 Route::resource('/cast', CastController::class);
 Route::resource('/genre', GenreController::class);
+
+
+Route::controller(AuthController::class)->group(function(){
+    //register form
+    Route::get('/register', 'register')->name('auth.register');
+
+    //store register
+    Route::post('/register', 'store')->name('auth.store');
+
+    //login form
+    Route::get('/login', 'login')->name('auth.login');
+
+    //auth process
+    Route::post('/auth', 'auth')->name('auth.authentication');
+
+    //logout
+    Route::post('/logout', 'logout')->name('auth.logout');
+
+    //dashboard
+    Route::get('/dashboard', 'dashboard')->name('auth.dashboard');
+});

@@ -24,18 +24,12 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
+
                 <div class="card-body">
                     <div class="form-group">
                         <label for="nama">Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Enter Nama" value="{{ $casts[0]->nama }}" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="umur">Umur</label>
-                        <input type="number" class="form-control" name="umur" id="umur" placeholder="Enter Umur" value="{{ $casts[0]->umur }}" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="bio">Biografi</label>
-                        <textarea class="form-control" name="bio" id="bio" placeholder="Input Biografi" disabled>{{ $casts[0]->bio }}</textarea>
+                        <input type="text" class="form-control" name="nama" id="nama" placeholder="Enter Nama"
+                            value="{{ $genre[0]->nama }}" disabled>
                     </div>
                 </div>
 

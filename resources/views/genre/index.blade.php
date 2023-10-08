@@ -59,8 +59,12 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <a href="{{ route('genre.edit', $values->id) }}"
-                                                                    class="btn-sm btn-warning">
+                                                                    class="btn-sm btn-info">
                                                                     <i class="fas fa-edit"></i>Edit
+                                                                </a>
+                                                                <a href="{{ route('genre.show', $values->id) }}"
+                                                                    class="btn-sm btn-warning">
+                                                                    <i class="fas fa-eyes"></i>Show
                                                                 </a>
                                                                 <button class="btn-sm btn-danger">
                                                                     <i class="fas fa-trash-alt"></i>Hapus
@@ -77,6 +81,16 @@
                                         </table>
                                     </div>
                                     <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <div class="row justify-content-between">
+                                            <div class="col-3">
+                                                <a class="btn btn-primary" href="{{ route('cast.create') }}"
+                                                    role="button">
+                                                    <i class="fas fa-plus"></i>
+                                                    Data Cast</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.card -->
                             </div>

@@ -44,8 +44,10 @@ class FilmController extends Controller
         ]);
 
         $image = $request->file('poster');
-        $result = CloudinaryStorage::upload($image->getRealPath(),
-        $image->getClientOriginalName());
+        $result = CloudinaryStorage::upload(
+            $image->getRealPath(),
+            $image->getClientOriginalName()
+        );
 
         $film::create([
             'judul' => $request['judul'],
@@ -64,6 +66,7 @@ class FilmController extends Controller
     public function show(Film $film)
     {
         //
+        return view('film.show', compact('film'));
     }
 
     /**

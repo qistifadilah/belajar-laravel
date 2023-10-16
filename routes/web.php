@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CastController,
     GenreController,
-    AuthController
+    AuthController,
+    FilmController,
 };
 use Illuminate\Support\Facades\Auth;
 
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 // Route::get('/home', function() {
 //     return view('home');
@@ -47,9 +48,9 @@ use Illuminate\Support\Facades\Auth;
 //     return view('user.form');
 // })-> name('get-form');
 
-Route::resource('/cast', CastController::class);
-Route::resource('/genre', GenreController::class);
-
+Route::resource('/cast', CastController::class)->middleware('auth');
+Route::resource('/genre', GenreController::class)->middleware('auth');
+Route::resource('/film', FilmController::class)->middleware('auth');
 
 Route::controller(AuthController::class)->group(function(){
     //register form

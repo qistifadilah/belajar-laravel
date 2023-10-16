@@ -17,12 +17,12 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1>Data Genre</h1>
+                                <h1>DataTables</h1>
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Data Genre</li>
+                                    <li class="breadcrumb-item active">DataTables</li>
                                 </ol>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">List Data Genre</h3>
+                                        <h3 class="card-title">List Data Film</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -44,15 +44,19 @@
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama</th>
+                                                    <th>Judul</th>
+                                                    <th>Tahun</th>
+                                                    <th>Genre</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @forelse ($genres as $key => $values)
+                                                @forelse ($films as $key => $values)
                                                     <tr>
                                                         <td>{{ $key + 1 }}</td>
-                                                        <td>{{ $values->nama }}</td>
+                                                        <td>{{ $values->judul }}</td>
+                                                        <td>{{ $values->tahun }}</td>
+                                                        <td>{{ $values->genre[0]->nama }}</td>
                                                         <td>
                                                             <form action="{{ route('genre.destroy', $values->id) }}"
                                                                 method="POST">
@@ -80,17 +84,17 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <!-- /.card-body -->
                                     <div class="card-footer">
                                         <div class="row justify-content-between">
                                             <div class="col-3">
-                                                <a class="btn btn-primary" href="{{ route('genre.create') }}"
+                                                <a class="btn btn-primary" href="{{ route('film.create') }}"
                                                     role="button">
                                                     <i class="fas fa-plus"></i>
-                                                    Data Genre</a>
+                                                    Data film</a>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- /.card-body -->
                                 </div>
                                 <!-- /.card -->
                             </div>

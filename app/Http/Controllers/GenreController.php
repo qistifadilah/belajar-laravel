@@ -35,7 +35,10 @@ class GenreController extends Controller
         //
         $request->validate([
             'nama' => 'required|unique:genres,nama|min:5',
-        ], [            // custom message
+        ], 
+        
+        // custom message
+        [           
             'nama.required' => 'Nama harus diisi',
             'nama.unique' => 'Nama sudah digunakan',
             'nama.min' => 'Nama harus diisi lebih dari 5 karakter',

@@ -15,7 +15,8 @@
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Data Perpustakaan</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                {{-- href="{{ route('user.edit', Auth::user()->id) }}" --}}
             </div>
         </div>
 
@@ -39,27 +40,31 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Starter Pages
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('cast.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Cast</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('genre.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Genre</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('cast.index') }}" class="nav-link @if (Request::segment(1) == 'cast') active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cast</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('film.index') }}" class="nav-link @if (Request::segment(1) == 'film') active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Film</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('genre.index') }}" class="nav-link @if (Request::segment(1) == 'genre') active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Genre</p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

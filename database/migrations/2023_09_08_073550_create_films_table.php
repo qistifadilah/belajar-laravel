@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('judul', 45);
             $table->text('ringkasan');
             $table->integer('tahun');
-            $table->string('poster', 45);
+            $table->text('poster', 45);
             $table->foreignId('genre_id')->constrained('genres');
             $table->timestamps();
         });

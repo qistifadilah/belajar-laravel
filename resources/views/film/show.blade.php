@@ -2,7 +2,22 @@
 @section('title', 'Film')
 @section('content')
     <!-- Main content -->
-    <section class="content">
+    <section class="content-wrapper mt-3">
+      <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Profile</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">General Form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-3">
@@ -17,21 +32,13 @@
                 </div>
 
                 <h3 class="profile-username text-center">{{ $film->judul }}</h3>
-
+                <p class="text-muted text-center">{{ $film->genre[0]->nama }}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Genre</b> <a class="float-right">{{ $film->genre[0]->nama }}</a>
-                  </li>
-                  <li class="list-group-item">
                     <b>Tahun</b> <a class="float-right">{{ $film->tahun }}</a>
                   </li>
-                  <li class="list-group-item">
-                    <b>Friends</b> <a class="float-right">13,287</a>
-                  </li>
                 </ul>
-
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -44,17 +51,21 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                <strong><i class="fas fa-book mr-1"></i> Ringkasan</strong>
 
                 <p class="text-muted">
-                  B.S. in Computer Science from the University of Tennessee at Knoxville
+                  {{ $film->ringkasan}}
                 </p>
 
                 <hr>
 
-                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                <strong><i class="fas fa-map-marker-alt mr-1"></i> Cast</strong>
 
-                <p class="text-muted">Malibu, California</p>
+                <p class="text-muted">
+                  @foreach ($film->peran()->get() as $peran)
+                    {{ $peran->cast[0]->nama }} as {{ $peran->nama }}  <br>
+                  @endforeach
+                </p>
 
                 <hr>
 
@@ -90,11 +101,11 @@
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
+                  <div class="active tab-panel" id="activity">
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('template/dist/img/user1-128x128.jpg') }}" alt="user image">
                         <span class="username">
                           <a href="#">Jonathan Burke Jr.</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
@@ -127,7 +138,7 @@
                     <!-- Post -->
                     <div class="post clearfix">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('template/dist/img/user7-128x128.jpg') }}" alt="User Image">
                         <span class="username">
                           <a href="#">Sarah Ross</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
@@ -157,7 +168,7 @@
                     <!-- Post -->
                     <div class="post">
                       <div class="user-block">
-                        <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('template/dist/img/user6-128x128.jpg') }}" alt="User Image">
                         <span class="username">
                           <a href="#">Adam Jones</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
@@ -167,19 +178,19 @@
                       <!-- /.user-block -->
                       <div class="row mb-3">
                         <div class="col-sm-6">
-                          <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
+                          <img class="img-fluid" src="{{ asset('template/dist/img/photo1.png') }}" alt="Photo">
                         </div>
                         <!-- /.col -->
                         <div class="col-sm-6">
                           <div class="row">
                             <div class="col-sm-6">
-                              <img class="img-fluid mb-3" src="../../dist/img/photo2.png" alt="Photo">
-                              <img class="img-fluid" src="../../dist/img/photo3.jpg" alt="Photo">
+                              <img class="img-fluid mb-3" src="{{ asset('template/dist/img/photo2.png') }}" alt="Photo">
+                              <img class="img-fluid" src="{{ asset('template/dist/img/photo3.jpg') }}" alt="Photo">
                             </div>
                             <!-- /.col -->
                             <div class="col-sm-6">
-                              <img class="img-fluid mb-3" src="../../dist/img/photo4.jpg" alt="Photo">
-                              <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
+                              <img class="img-fluid mb-3" src="{{ asset('template/dist/img/photo4.jpg') }}" alt="Photo">
+                              <img class="img-fluid" src="{{ asset('template/dist/img/photo1.png') }}" alt="Photo">
                             </div>
                             <!-- /.col -->
                           </div>

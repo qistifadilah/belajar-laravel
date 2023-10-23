@@ -33,13 +33,18 @@
                 </div>
                 <div class="form-group">
                   <label for="genre">Genre</label>
-                  <select name="genre" id="genre" class="form-control">
+                  <select name="genre_id" id="genre" class="form-control">
                     <option disabled selected>--Pilih Salah Satu--</option>
-                      @forelse ($genres as $key => $value )
-                        <option value="{{ $value->id }}">{{ $value->nama }}</option>
-                      @empty
-                        <option disabled>--Data Masih Kosong--</option>
-                      @endforelse 
+                    {{-- @forelse ($genres as $genre)
+                      <option value="{{ $genre->id }}">{{ $genre->nama }}</option>
+                    @empty
+                      <option disabled>--Data Masih Kosong--</option>
+                    @endforelse  --}}
+                    @forelse ($genres as $key => $value )
+                      <option value="{{ $value->id }}">{{ $value->nama }}</option>
+                    @empty
+                      <option disabled>--Data Masih Kosong--</option>
+                    @endforelse 
                       {{-- ($casts as $key => $value) --}}
                   </select>
                 </div>

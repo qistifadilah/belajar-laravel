@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     GenreController,
     AuthController,
     FilmController,
+    PeranController
 };
 use Illuminate\Support\Facades\Auth;
 
@@ -71,3 +72,6 @@ Route::controller(AuthController::class)->group(function(){
     //dashboard
     Route::get('/dashboard', 'dashboard')->name('auth.dashboard');
 });
+
+Route::get('/film/{film}/peran/create', [PeranController::class, 'create'])->name('peran.create')->middleware('auth');
+Route::post('/film/{film}/peran', [PeranController::class, 'store'])->name('peran.store')->middleware('auth');

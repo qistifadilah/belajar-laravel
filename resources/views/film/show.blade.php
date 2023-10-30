@@ -26,7 +26,7 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{ $film->poster }}"
+                                <img class="profile-user-img img-fluid" src="{{ $film->poster }}"
                                     alt="User profile picture">
                             </div>
 
@@ -50,20 +50,20 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <strong><i class="fas fa-book mr-1"></i> Ringkasan</strong>
-
-                            <p class="text-muted">
-                                {{ $film->ringkasan }}
-                            </p>
-
-                            <hr>
-
                             <strong><i class="fas fa-map-marker-alt mr-1"></i> Cast</strong>
 
                             <p class="text-muted">
                                 @foreach ($film->peran()->get() as $peran)
                                     {{ $peran->cast[0]->nama }} as {{ $peran->nama }} <br>
                                 @endforeach
+                            </p>
+
+                            <hr>
+
+                            <strong><i class="fas fa-book mr-1"></i> Ringkasan</strong>
+
+                            <p class="text-muted">
+                                {{ $film->ringkasan }}
                             </p>
 
                             <hr>

@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     FilmController,
     PeranController,
     KritikController,
+    ProfileController
 };
 use Illuminate\Support\Facades\Auth;
 
@@ -79,3 +80,5 @@ Route::post('/film/{film}/peran', [PeranController::class, 'store'])->name('pera
 
 Route::get('/film/{film}/kritik/create', [KritikController::class, 'create'])->name('kritik.create')->middleware('auth');
 Route::post('/film/{film}/kritik', [KritikController::class, 'store'])->name('kritik.store')->middleware('auth');
+
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('user.profile')->middleware('auth');

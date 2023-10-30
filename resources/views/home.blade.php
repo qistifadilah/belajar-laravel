@@ -1,1 +1,1 @@
-<h1>Ini Home</h1>
+<h1>Welcome {{ Auth::user()->name }}!</h1>
